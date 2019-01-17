@@ -2,6 +2,10 @@ var assert = require('assert');
 var common = require('../../common');
 var crypto = require('crypto');
 
+if (process.platform === 'win32') {
+  common.skipTest('windows sockets close immediately');
+}
+
 common.getTestConnection(function (err, conn) {
   assert.ifError(err);
 
